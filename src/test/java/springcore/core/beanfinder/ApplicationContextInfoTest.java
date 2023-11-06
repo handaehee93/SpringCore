@@ -26,7 +26,7 @@ public class ApplicationContextInfoTest {
     // 아래는 스프링에서 필요해서 자체적으로 가지고 있는 Bean말고, 순수 어플리케이션을 개발할 때 등록한 bean을
     // 출력하는 코드
 @Test
-    @DisplayName("모든 빈 출력하기")
+    @DisplayName("애프리케이션 빈 출력하기")
     void findApplicationBean () {
        String[] beanDefinitionNames =  ac.getBeanDefinitionNames();
         for (String beanDefinitionName: beanDefinitionNames) {
