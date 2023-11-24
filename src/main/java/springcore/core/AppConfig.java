@@ -15,7 +15,7 @@ import springcore.core.order.OrderServiceImpl;
 public class AppConfig {
 
 
-    // Bean 어노테이션을 붙여 주면 이것 들이 스프링 컨테이너에 등록이 된다.
+    // Bean 어노테이션을 붙여 주면 이것 들이 스프링 컨테이너에 등록이 된다. dd
     // MemberService 역할
     @Bean
     public MemberService memberService() {
