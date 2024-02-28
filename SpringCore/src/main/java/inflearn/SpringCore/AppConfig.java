@@ -1,6 +1,8 @@
 package inflearn.SpringCore;
 
+import inflearn.SpringCore.discount.DiscountPolicy;
 import inflearn.SpringCore.discount.RateDiscountPolicy;
+import inflearn.SpringCore.member.MemberRepository;
 import inflearn.SpringCore.member.MemberService;
 import inflearn.SpringCore.member.MemberServiceImpl;
 import inflearn.SpringCore.member.MemoryMemberRepository;
@@ -12,10 +14,19 @@ public class AppConfig {
     // 이렇게 하면 구현체에서는 인터페이스에만 의존하게 되고, AppConfig에서 전달 받은 인스턴스를 통해
     // 인터페이스의 구현체를 사용하게 된다.
     public MemberService memberService () {
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
+    }
+
+    public MemberRepository memberRepository () {
+        return new MemoryMemberRepository();
     }
 
     public OrderService orderService () {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new RateDiscountPolicy());
+        return new OrderServiceImpl(memberRepository (), discountPolicy ());
     }
+
+    public DiscountPolicy discountPolicy () {
+        return new RateDiscountPolicy();
+    }
+
 }
