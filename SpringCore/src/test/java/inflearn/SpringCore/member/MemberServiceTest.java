@@ -1,17 +1,18 @@
 package inflearn.SpringCore.member;
 
+import inflearn.SpringCore.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
 
-
+    AppConfig appConfig = new AppConfig();
     @Test
     void join () {
         // member 객체 생성 하고
         Member member = new Member(1L, "memberA", Grade.VIP);
         // 서비스를 가져 온다.
-        MemberService memberService = new MemberServiceImpl();
+        MemberService memberService = appConfig.memberService();
 
         // 가져온 서비스에서 회원을 가입 시키고, 해당 회원을 다시 찾아 본다.
         memberService.join(member);
