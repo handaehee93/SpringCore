@@ -3,7 +3,7 @@ package inflearn.SpringCore.discount;
 import inflearn.SpringCore.member.Grade;
 import inflearn.SpringCore.member.Member;
 
-public class FixDiscountPolicy implements DisCountPolicy{
+public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmount = 1000;
     @Override
