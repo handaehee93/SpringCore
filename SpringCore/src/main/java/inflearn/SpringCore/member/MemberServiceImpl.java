@@ -9,7 +9,12 @@ public class MemberServiceImpl implements MemberService {
     * 추상화에만 의존해야 하는 DIP원칙을 위반하고 있는 것.
     * */
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
     @Override
     public void join(Member member) {
         memberRepository.save(member);
