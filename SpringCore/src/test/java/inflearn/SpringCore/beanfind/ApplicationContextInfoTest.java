@@ -1,6 +1,9 @@
 package inflearn.SpringCore.beanfind;
 
 import inflearn.SpringCore.AppConfig;
+import inflearn.SpringCore.member.MemberService;
+import inflearn.SpringCore.member.MemberServiceImpl;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -39,7 +42,22 @@ public class ApplicationContextInfoTest {
                 System.out.println("빈 이름 = " + beanDefinitionName + ", 빈 값 =" + bean);
             }
         }
+    }
 
+    @Test
+    @DisplayName("빈 조회 기본 ")
+    void findBeanBasic () {
+        MemberService memberService = ac.getBean("memberService", MemberService.class);
+        System.out.println("memberService = " + memberService);
+        System.out.println("memberService.getClass() = " + memberService.getClass());
+        Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+    }
 
+    @Test
+    @DisplayName("이름 없이 타입으로 조회")
+    void findBeanByName () {
+        MemberService memberService = ac.getBean(MemberService.class);
+        Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+        System.out.println(memberService);
     }
 }
