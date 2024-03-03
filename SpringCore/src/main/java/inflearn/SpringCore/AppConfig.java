@@ -34,4 +34,10 @@ public class AppConfig {
         return new FixDiscountPolicy();
     }
 
+    // 같은 타입의 빈이 존재하는 경우 빈 조회 예제를 위해 같은 타입을 반환하는 메서드 생성
+    @Bean
+    public  MemberRepository memberRepository2 () {
+        return new MemoryMemberRepository();
+    }
+
 }
